@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qual é o seu perfil? — Axion Regulatory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Indústria e Pesquisa — Viabilização e Entrada",
+      "description": "Suporte regulatório para desenvolvedores de ATMPs que buscam entrada no mercado brasileiro, com implementação de GMP/cGMP/GCP e revisão crítica de estudos clínicos.",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Desenvolvedores de terapias avançadas, patrocinadores de ensaios clínicos e institutos de pesquisa"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Investidores e VCs — Gestão de Risco FMEA",
+      "description": "Due diligence técnica regulatória baseada em metodologia FMEA para fundos de venture capital avaliando biotechs de alta complexidade.",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Fundos de venture capital e investidores privados em biotechs norte-americanas"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Governos e Nações — Marcos Regulatórios",
+      "description": "Estruturação de marcos normativos para ATMPs baseada em Análise de Impacto Regulatório e harmonização com ICH, PIC/S e OMS.",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Autoridades sanitárias, agências reguladoras e governos"
+      }
+    }
+  ]
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080f17;
+      color: #c5d0db;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+    }
+
+    /* ── Section heading ─────────────────────────── */
+    .profiles-heading {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .profiles-heading h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Grid of three cards ─────────────────────── */
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── CARD — closed state ─────────────────────── */
+    article.pcard {
+      background: #0d1b2a;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    article.pcard:hover {
+      border-color: #4a90d9;
+      box-shadow: 0 0 0 1px #4a90d9, 0 8px 28px rgba(74, 144, 217, 0.18);
+    }
+
+    /* Visible closed face */
+    .pcard__face {
+      padding: 2rem 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pcard__hex {
+      font-size: 1.2rem;
+      color: #4a90d9;
+      opacity: 0.65;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .pcard h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .pcard__sub {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #8a9bb0;
+      text-transform: uppercase;
+    }
+
+    /* ── Expanded panel — hidden but in DOM (SEO rule) ── */
+    .pcard__panel {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0d1b2a;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 3.5rem 3rem 4rem;
+
+      /* Hidden via opacity+visibility so content is still parsed by crawlers */
+      opacity: 0;
+      visibility: hidden;
+      /* Do NOT use display:none — SEO requirement */
+      pointer-events: none;
+      transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    }
+
+    article.pcard.is-open .pcard__panel {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    /* Close button */
+    .pcard__close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .pcard__close:hover {
+      color: #4a90d9;
+      background: rgba(74, 144, 217, 0.12);
+    }
+
+    /* Panel header */
+    .pcard__panel-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .pcard__panel-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+    }
+
+    .pcard__panel-header .pcard__sub {
+      font-size: 0.68rem;
+    }
+
+    /* Sub-card grid */
+    .pcard__sub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Sub-card */
+    section.subcell {
+      background: #132237;
+      border-radius: 10px;
+      padding: 2rem;
+    }
+
+    section.subcell h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+    }
+
+    section.subcell p {
+      font-size: 14px;
+      color: #c5d0db;
+      line-height: 1.7;
+    }
+
+    /* CTA button */
+    .pcard__cta {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background: #4a90d9;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .pcard__cta:hover { opacity: 0.85; }
+
+    /* ── Mobile ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      .profiles-grid { grid-template-columns: 1fr; }
+
+      .pcard__panel { padding: 2rem 1.25rem 3rem; }
+
+      .pcard__sub-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profiles-heading">
+    <h1>Qual é o seu perfil?</h1>
+  </div>
+
+  <div class="profiles-grid">
+
+    <!-- ══════════════ CARD 1 ══════════════ -->
+    <article class="pcard" id="pcard-1" itemscope itemtype="https://schema.org/Service">
+
+      <!-- Closed face — ONLY hex + title + subtitle -->
+      <div class="pcard__face" onclick="openCard('pcard-1')">
+        <span class="pcard__hex" aria-hidden="true">⬡</span>
+        <h2 itemprop="name">Indústria e Pesquisa</h2>
+        <p class="pcard__sub">VIABILIZAÇÃO E ENTRADA</p>
+      </div>
+
+      <!-- Expanded panel — always in DOM, hidden via opacity/visibility -->
+      <div class="pcard__panel" role="dialog" aria-modal="true" aria-label="Indústria e Pesquisa" itemprop="description">
+        <button class="pcard__close" onclick="closeCard(event,'pcard-1')" aria-label="Fechar">✕</button>
+
+        <div class="pcard__panel-header">
+          <h2>Indústria e Pesquisa</h2>
+          <p class="pcard__sub">VIABILIZAÇÃO E ENTRADA</p>
+        </div>
+
+        <div class="pcard__sub-grid">
+          <section class="subcell">
+            <h3>Para quem é</h3>
+            <p>Desenvolvedores de terapias avançadas, patrocinadores de ensaios clínicos e institutos de pesquisa que buscam entrada no mercado brasileiro.</p>
+          </section>
+          <section class="subcell">
+            <h3>Dor Principal</h3>
+            <p>Incerteza sobre se o desenvolvimento técnico e clínico atual suporta a execução regulatória no Brasil, com risco de rejeição por inadequação documental ou de desenho de estudo.</p>
+          </section>
+          <section class="subcell">
+            <h3>Resultado Esperado</h3>
+            <p>Entrada de mercado mais rápida e com menor risco de rejeição regulatória, com documentação robusta construída desde a fase inicial do desenvolvimento.</p>
+          </section>
+        </div>
+
+        <a href="./schedule.html" class="pcard__cta">Agendar Reunião Estratégica</a>
+      </div>
+
+    </article>
+
+
+    <!-- ══════════════ CARD 2 ══════════════ -->
+    <article class="pcard" id="pcard-2" itemscope itemtype="https://schema.org/Service">
+
+      <div class="pcard__face" onclick="openCard('pcard-2')">
+        <span class="pcard__hex" aria-hidden="true">⬡</span>
+        <h2 itemprop="name">Investidores e VCs</h2>
+        <p class="pcard__sub">GESTÃO DE RISCO FMEA</p>
+      </div>
+
+      <div class="pcard__panel" role="dialog" aria-modal="true" aria-label="Investidores e VCs" itemprop="description">
+        <button class="pcard__close" onclick="closeCard(event,'pcard-2')" aria-label="Fechar">✕</button>
+
+        <div class="pcard__panel-header">
+          <h2>Investidores e VCs</h2>
+          <p class="pcard__sub">GESTÃO DE RISCO FMEA</p>
+        </div>
+
+        <div class="pcard__sub-grid">
+          <section class="subcell">
+            <h3>Para quem é</h3>
+            <p>Fundos de venture capital e investidores privados avaliando aportes em biotechs norte-americanas com operações ou ambições no Brasil.</p>
+          </section>
+          <section class="subcell">
+            <h3>Dor Principal</h3>
+            <p>Dificuldade em avaliar a sustentabilidade regulatória de ativos de alta complexidade biotecnológica antes do aporte, com risco de perda por falha regulatória não mapeada.</p>
+          </section>
+          <section class="subcell">
+            <h3>Resultado Esperado</h3>
+            <p>Decisões de investimento mais seguras com risco regulatório mapeado e mitigado via auditoria técnica especializada antes da entrada no ativo.</p>
+          </section>
+        </div>
+
+        <a href="./schedule.html" class="pcard__cta">Agendar Reunião Estratégica</a>
+      </div>
+
+    </article>
+
+
+    <!-- ══════════════ CARD 3 ══════════════ -->
+    <article class="pcard" id="pcard-3" itemscope itemtype="https://schema.org/Service">
+
+      <div class="pcard__face" onclick="openCard('pcard-3')">
+        <span class="pcard__hex" aria-hidden="true">⬡</span>
+        <h2 itemprop="name">Governos e Nações</h2>
+        <p class="pcard__sub">MARCOS REGULATÓRIOS</p>
+      </div>
+
+      <div class="pcard__panel" role="dialog" aria-modal="true" aria-label="Governos e Nações" itemprop="description">
+        <button class="pcard__close" onclick="closeCard(event,'pcard-3')" aria-label="Fechar">✕</button>
+
+        <div class="pcard__panel-header">
+          <h2>Governos e Nações</h2>
+          <p class="pcard__sub">MARCOS REGULATÓRIOS</p>
+        </div>
+
+        <div class="pcard__sub-grid">
+          <section class="subcell">
+            <h3>Para quem é</h3>
+            <p>Autoridades sanitárias, agências reguladoras e governos que precisam estruturar ou atualizar marcos normativos para ATMPs.</p>
+          </section>
+          <section class="subcell">
+            <h3>Dor Principal</h3>
+            <p>Ausência de marcos regulatórios maduros que equilibrem inovação e segurança sanitária, gerando insegurança jurídica e afastando investimento.</p>
+          </section>
+          <section class="subcell">
+            <h3>Resultado Esperado</h3>
+            <p>Marcos normativos cientificamente embasados, harmonizados com ICH, PIC/S e OMS, prontos para atrair inovação com segurança sanitária garantida.</p>
+          </section>
+        </div>
+
+        <a href="./schedule.html" class="pcard__cta">Agendar Reunião Estratégica</a>
+      </div>
+
+    </article>
+
+  </div><!-- /profiles-grid -->
+
+  <script>
+    function openCard(id) {
+      // Close any currently open card first
+      document.querySelectorAll('.pcard.is-open').forEach(c => c.classList.remove('is-open'));
+
+      const card = document.getElementById(id);
+      if (!card) return;
+      card.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCard(e, id) {
+      e.stopPropagation();
+      const card = document.getElementById(id);
+      if (!card) return;
+      card.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    // Escape key closes any open card
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.pcard.is-open').forEach(c => c.classList.remove('is-open'));
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>

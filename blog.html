@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Axion Regulatory</title>
+    <meta name="description" content="Regulatory intelligence for Advanced Therapy Medicinal Products (ATMPs). Insights on ANVISA, GMP, clinical trials, and market entry strategy in Brazil." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+      @media (max-width: 900px) {
+        .blog-grid { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 600px) {
+        .blog-grid { grid-template-columns: 1fr; }
+      }
+      .blog-card {
+        background: var(--color-bg, #080f17);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .blog-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(74,144,217,0.35);
+      }
+      .blog-card__tag {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #4a90d9;
+        margin-bottom: 0.75rem;
+      }
+      .blog-card__body {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .blog-card__title {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+      }
+      .blog-card__excerpt {
+        font-size: 0.875rem;
+        color: #6b7d93;
+        font-weight: 300;
+        line-height: 1.65;
+        flex: 1;
+        margin-bottom: 1.5rem;
+      }
+      .blog-card__meta {
+        font-size: 11px;
+        color: #4a6080;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .blog-card__read {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 13px;
+        font-weight: 600;
+        color: #4a90d9;
+        text-decoration: none;
+        margin-top: 1.25rem;
+        transition: gap 0.2s ease;
+      }
+      .blog-card__read:hover { gap: 0.7rem; }
+      .blog-coming {
+        opacity: 0.4;
+        cursor: default;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled flex-between" id="navbar">
+      <div class="navbar-logo"><a href="./index.html" style="color:inherit;text-decoration:none;">Axion Regulatory.</a></div>
+      <div class="navbar-links">
+        <a href="./index.html#services">Solutions</a>
+        <a href="./index.html#hub">Intelligence Hub</a>
+        <a href="./about.html">About Us</a>
+        <a href="./blog.html" class="nav-active">Blog</a>
+        <a href="./engagements.html">Engagement Models</a>
+      </div>
+      <div>
+        <a href="./schedule.html" class="btn btn-primary navbar-cta">Schedule Strategic Call</a>
+      </div>
+    </nav>
+
+    <main style="padding-top: 100px;">
+
+      <!-- Header -->
+      <section class="section">
+        <div class="container container-sm text-center reveal">
+          <span class="label">Regulatory Intelligence</span>
+          <h1 class="h1 mt-4">Axion Blog</h1>
+          <p class="mt-6 text-xl text-muted font-light max-w-3xl mx-auto">
+            Strategic insights on ATMP regulation, ANVISA market entry, clinical excellence, and investment risk in advanced therapies.
+          </p>
+        </div>
+      </section>
+
+      <!-- Blog Grid -->
+      <section class="section pt-0">
+        <div class="container reveal">
+          <div class="blog-grid">
+
+            <!-- Post 1 — Featured -->
+            <div class="blog-card" style="grid-column: span 2;">
+              <div class="blog-card__body" style="padding: 2.5rem;">
+                <p class="blog-card__tag">ANVISA · Market Entry</p>
+                <h2 class="blog-card__title" style="font-size:1.4rem;">How GMP/cGMP/GCP Form the Regulatory Foundation for ATMPs in Brazil</h2>
+                <p class="blog-card__excerpt">
+                  For international developers entering the Brazilian ATMP market, the critical question is not whether your product is scientifically sound — it is whether your documentation architecture and operational practices will survive ANVISA's rigorous scrutiny. Good Manufacturing Practice, combined with clinical-grade execution, must be treated as a transversal standard from the earliest development phases, not as a submission checklist item.
+                </p>
+                <p class="blog-card__meta">Axion Regulatory · Q1 2025</p>
+                <a href="#" class="blog-card__read">Read Article →</a>
+              </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="blog-card">
+              <div class="blog-card__body">
+                <p class="blog-card__tag">Investors · Risk</p>
+                <h2 class="blog-card__title">FMEA Applied to Biotech Investment: Mapping Regulatory Risk Before the Term Sheet</h2>
+                <p class="blog-card__excerpt">Failure Mode and Effects Analysis provides a structured framework for identifying hidden regulatory vulnerabilities in ATMP assets before capital is committed.</p>
+                <p class="blog-card__meta">Axion Regulatory · Q1 2025</p>
+                <a href="#" class="blog-card__read">Read Article →</a>
+              </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="blog-card">
+              <div class="blog-card__body">
+                <p class="blog-card__tag">Clinical Trials · ANVISA</p>
+                <h2 class="blog-card__title">Clinical Trial Design for Brazil: What International Sponsors Get Wrong</h2>
+                <p class="blog-card__excerpt">Study designs that perform well in FDA or EMA contexts frequently fail to meet ANVISA's specific requirements for ATMP trials. Understanding the delta is essential before protocol finalization.</p>
+                <p class="blog-card__meta">Axion Regulatory · Q2 2025</p>
+                <a href="#" class="blog-card__read">Read Article →</a>
+              </div>
+            </div>
+
+            <!-- Post 4 -->
+            <div class="blog-card">
+              <div class="blog-card__body">
+                <p class="blog-card__tag">Policy · Governments</p>
+                <h2 class="blog-card__title">Regulatory Impact Analysis for ATMP Frameworks: A Government Roadmap</h2>
+                <p class="blog-card__excerpt">How public health agencies can leverage AIR methodologies to build scientifically grounded regulatory frameworks that attract innovation while protecting patient safety.</p>
+                <p class="blog-card__meta">Axion Regulatory · Q2 2025</p>
+                <a href="#" class="blog-card__read">Read Article →</a>
+              </div>
+            </div>
+
+            <!-- Post 5 — Coming soon -->
+            <div class="blog-card blog-coming">
+              <div class="blog-card__body">
+                <p class="blog-card__tag">ICH · Harmonization</p>
+                <h2 class="blog-card__title">Brazil and ICH Q13: Opportunities for Continuous Manufacturing in ATMPs</h2>
+                <p class="blog-card__excerpt">An analysis of how Brazil's alignment with ICH Q13 guidelines opens pathways for next-generation ATMP manufacturing without compromising regulatory acceptability.</p>
+                <p class="blog-card__meta">Coming Soon · Q3 2025</p>
+              </div>
+            </div>
+
+            <!-- Post 6 — Coming soon -->
+            <div class="blog-card blog-coming">
+              <div class="blog-card__body">
+                <p class="blog-card__tag">Due Diligence · VC</p>
+                <h2 class="blog-card__title">The Regulatory Probability of Success as a VC Metric: A Practical Framework</h2>
+                <p class="blog-card__excerpt">Beyond scientific validation — how leading venture capital firms are incorporating regulatory probability of success as a first-order metric in biotech due diligence.</p>
+                <p class="blog-card__meta">Coming Soon · Q3 2025</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter CTA -->
+      <section class="section section-dark text-center border-t border-white-20 pb-20">
+        <div class="container container-sm reveal">
+          <span class="label" style="color:#4a90d9;">Stay Informed</span>
+          <h2 class="h2 mt-4 text-white mb-6">Regulatory Intelligence Briefings</h2>
+          <p class="text-white-70 font-light mb-10 max-w-2xl mx-auto">
+            Periodic briefings on ANVISA regulatory developments, ATMP policy changes, and strategic market intelligence — delivered to senior executives and investors.
+          </p>
+          <a href="./inquiry.html" class="btn btn-primary">Request Access</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="bg-black py-8 border-t border-white-10">
+      <div class="container flex-between text-sm text-white-50">
+        <div class="font-heading text-white font-bold tracking-tight">Axion Regulatory.</div>
+        <div class="flex gap-6">
+          <span>All Rights Reserved. Highly selective and confidential consultancy.</span>
+          <a href="#" class="hover:text-white transition">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
