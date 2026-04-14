@@ -805,38 +805,42 @@ const dictionary = {
   }
 };
 
+// ── i18n Engine (global scope) ─────────────────────────────────
+function updateLanguage(langKey) {
+  if (!dictionary[langKey]) return;
+  const texts = dictionary[langKey];
+
+  // Plain text updates
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (texts[key] !== undefined) el.textContent = texts[key];
+  });
+  // Rich HTML updates (for elements with <strong>, etc.)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (texts[key] !== undefined) el.innerHTML = texts[key];
+  });
+}
+
+// ── Apply saved language IMMEDIATELY (script is at bottom of <body>) ──
+(function applyStoredLang() {
+  const savedLang = localStorage.getItem('axion-lang') || 'en';
+  const selector = document.getElementById('langToggle');
+  if (selector) selector.value = savedLang;
+  updateLanguage(savedLang);
+})();
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Language Toggle Logic
   const langSelector = document.getElementById('langToggle');
-  
+
   if (langSelector) {
     langSelector.addEventListener('change', (e) => {
       const selectedLang = e.target.value;
       updateLanguage(selectedLang);
       localStorage.setItem('axion-lang', selectedLang);
-    });
-    
-    // Restore preferred Language
-    const savedLang = localStorage.getItem('axion-lang') || 'en';
-    langSelector.value = savedLang;
-    updateLanguage(savedLang);
-  }
-
-  function updateLanguage(langKey) {
-    if (!dictionary[langKey]) return;
-    const texts = dictionary[langKey];
-    
-    // Plain text updates
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (texts[key]) el.textContent = texts[key];
-    });
-    // Rich HTML updates (for elements with <strong>, etc.)
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const key = el.getAttribute('data-i18n-html');
-      if (texts[key]) el.innerHTML = texts[key];
     });
   }
 
