@@ -1,3 +1,6 @@
 {
-  "name": "axion-regulatory"
+  "name": "axion-regulatory",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
 }

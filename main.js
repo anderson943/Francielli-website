@@ -332,6 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 3. Scroll Reveal Animations
+  // Mark body so CSS applies the animation (progressive enhancement)
+  document.body.classList.add('js-reveal-ready');
+
   const revealElements = document.querySelectorAll('.reveal');
   const revealCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -350,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   setTimeout(() => {
     revealElements.forEach(el => revealObserver.observe(el));
-    // Trigger reveals that are immediately in viewport
+    // Trigger reveals already in viewport on load
     document.querySelectorAll('.reveal').forEach(el => {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight - 50) {

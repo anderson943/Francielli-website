@@ -515,14 +515,19 @@ a {
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* Scroll Animation classes - Elevated Motion */
+/* Scroll Animation classes - Progressive Enhancement */
 .reveal {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: opacity, transform;
 }
-.reveal.active {
+/* When JS is available, start hidden and animate in */
+.js-reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.js-reveal-ready .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
