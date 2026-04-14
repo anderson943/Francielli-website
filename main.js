@@ -930,6 +930,10 @@ function closeCard(e, id) {
   window.scrollTo({ top: _savedScrollY, behavior: 'instant' });
 }
 
+// Expose functions globally so inline onclick handlers work in ES module context
+window.openCard = openCard;
+window.closeCard = closeCard;
+
 // Escape key closes any open panel
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
