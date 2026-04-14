@@ -38,32 +38,32 @@
     <main class="page-padding">
       <section class="section pt-32 pb-24">
         <div class="container container-sm reveal active">
-          <span class="label">Intake Protocol</span>
-          <h1 class="h1 mt-4 mb-6">Confidential Inquiry</h1>
-          <p class="text-xl text-muted font-light max-w-2xl mb-4">This inquiry is intended for organizations and investors evaluating regulatory, clinical, or strategic entry into Brazil.</p>
-          <p class="text-sm text-muted max-w-2xl pb-4">Submissions are reviewed based on scope, complexity, and alignment with active mandates.</p>
-          <p class="text-sm text-primary-dark font-medium max-w-2xl pb-10 border-b border-gray-200">All submissions are treated as confidential. Sensitive technical information should only be shared after formal engagement.</p>
+          <span class="label" data-i18n="inq-intake-label">Intake Protocol</span>
+          <h1 class="h1 mt-4 mb-6" data-i18n="inq-page-title">Confidential Inquiry</h1>
+          <p class="text-xl text-muted font-light max-w-2xl mb-4" data-i18n="inq-page-desc">This inquiry is intended for organizations and investors evaluating regulatory, clinical, or strategic entry into Brazil.</p>
+          <p class="text-sm text-muted max-w-2xl pb-4" data-i18n="inq-page-note">Submissions are reviewed based on scope, complexity, and alignment with active mandates.</p>
+          <p class="text-sm text-primary-dark font-medium max-w-2xl pb-10 border-b border-gray-200" data-i18n="inq-page-conf">All submissions are treated as confidential. Sensitive technical information should only be shared after formal engagement.</p>
           
           <form id="inquiryForm" class="mt-16 form-institutional reveal active delay-1">
             
             <!-- Section: Contact Information -->
             <div class="form-section mb-16">
-              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark">01. Contact Information</h3>
+              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark" data-i18n="inq-section1">01. Contact Information</h3>
               <div class="grid-2 gap-8">
                 <div class="form-group">
-                  <label for="fullName">Full Name</label>
+                  <label for="fullName" data-i18n="inq-full-name">Full Name</label>
                   <input type="text" id="fullName" name="fullName" required class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="workEmail">Work Email</label>
+                  <label for="workEmail" data-i18n="inq-email">Work Email</label>
                   <input type="email" id="workEmail" name="workEmail" required class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="company">Company / Organization</label>
+                  <label for="company" data-i18n="inq-company">Company / Organization</label>
                   <input type="text" id="company" name="company" required class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="role">Role / Title</label>
+                  <label for="role" data-i18n="inq-role">Role / Title</label>
                   <input type="text" id="role" name="role" required class="form-control">
                 </div>
               </div>
@@ -71,7 +71,7 @@
 
             <!-- Section: Engagement Context -->
             <div class="form-section mb-16 border-t border-gray-100 pt-16">
-              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark">02. Engagement Context</h3>
+              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark" data-i18n="inq-section2">02. Engagement Context</h3>
               <div class="grid-2 gap-8">
                 <div class="form-group">
                   <label for="inquiryType">Inquiry Type</label>
@@ -133,9 +133,9 @@
 
             <!-- Section: Strategic Context -->
             <div class="form-section mb-16 border-t border-gray-100 pt-16">
-              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark">03. Strategic Context</h3>
+              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark" data-i18n="inq-section3">03. Strategic Context</h3>
               <div class="form-group mb-8">
-                <label for="description">Brief Description of the Program or Mandate</label>
+                <label for="description" data-i18n="inq-desc-label">Brief Description of the Program or Mandate</label>
                 <textarea id="description" name="description" rows="4" required class="form-control resize-none"></textarea>
               </div>
               <div class="form-group mb-8">
@@ -178,7 +178,7 @@
 
             <!-- Section: Final Box -->
             <div class="form-section mb-16 border-t border-gray-100 pt-16">
-              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark">05. Additional Clarification</h3>
+              <h3 class="h5 mb-8 uppercase tracking-wider text-primary-dark" data-i18n="inq-section5">05. Additional Clarification</h3>
               <div class="form-group">
                 <label for="notes">Confidential Notes or Additional Context</label>
                 <textarea id="notes" name="notes" rows="3" class="form-control resize-none"></textarea>
@@ -186,15 +186,15 @@
             </div>
             
             <div class="border-t border-gray-200 pt-10">
-              <button type="submit" class="btn btn-primary px-10 py-4 text-base tracking-wide">Submit Confidential Inquiry</button>
+              <button type="submit" id="inquirySubmitBtn" class="btn btn-primary px-10 py-4 text-base tracking-wide" data-i18n="inq-submit">Enviar Consulta</button>
             </div>
           </form>
 
           <!-- Confirmation Message (Hidden) -->
           <div id="formConfirmation" class="hidden mt-16 text-center border border-gray-200 p-16 bg-surface">
-            <h3 class="h3 mb-4">Inquiry Received</h3>
-            <p class="text-lg text-muted max-w-xl mx-auto">Your inquiry has been received and will be reviewed confidentially. <br><br> If aligned, we will respond with next steps.</p>
-            <a href="./index.html" class="btn btn-primary mt-8 inline-block">Return to Overview</a>
+            <h3 class="h3 mb-4" data-i18n="inq-confirm-title">Inquiry Received</h3>
+            <p class="text-lg text-muted max-w-xl mx-auto" data-i18n="inq-confirm-desc">Your inquiry has been received and will be reviewed confidentially. If aligned, we will respond with next steps.</p>
+            <a href="./index.html" class="btn btn-primary mt-8 inline-block" data-i18n="inq-confirm-cta">Return to Overview</a>
           </div>
         </div>
       </section>
@@ -214,8 +214,12 @@
       document.getElementById('inquiryForm')?.addEventListener('submit', function(e) {
         e.preventDefault();
         this.classList.add('hidden');
-        document.getElementById('formConfirmation').classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const confirmation = document.getElementById('formConfirmation');
+        confirmation.classList.remove('hidden');
+        // Scroll to confirmation message (not page top)
+        setTimeout(() => {
+          confirmation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
       });
     </script>
   </body>
