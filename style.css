@@ -607,6 +607,11 @@ a {
 /* =========================================
    PROFILES SECTION
    ========================================= */
+/* Offset scroll targets to account for fixed navbar (~80px) */
+#profiles, #hub, #contact, #home {
+  scroll-margin-top: 90px;
+}
+
 .section-profiles {
   background: var(--color-surface);
   padding: 4rem 0 5rem;
