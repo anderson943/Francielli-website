@@ -270,11 +270,14 @@ a {
   transition: all var(--transition-smooth);
   gap: 2rem;
 }
+.navbar:not(.scrolled) {
+  background: linear-gradient(to bottom, rgba(13, 27, 42, 0.75) 0%, transparent 100%);
+}
 .navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.98);
+  background: rgba(248, 250, 251, 0.98);
   padding: 1rem 5%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(27, 38, 59, 0.08);
   color: var(--color-text);
 }
 .navbar.scrolled .navbar-logo {
@@ -605,7 +608,7 @@ a {
    PROFILES SECTION
    ========================================= */
 .section-profiles {
-  background: var(--color-bg);
+  background: var(--color-surface);
   padding: 4rem 0 5rem;
 }
 
@@ -646,18 +649,18 @@ a {
   }
 }
 
-/* Cards start invisible; animation fires when parent gets .active */
-.profiles-grid .pcard {
+/* Cards start invisible ONLY when JS is ready; animation fires when parent gets .active */
+.js-reveal-ready .profiles-grid .pcard {
   opacity: 0;
 }
 
-.profiles-grid.active .pcard {
+.js-reveal-ready .profiles-grid.active .pcard {
   animation: pcardEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.profiles-grid.active .pcard:nth-child(1) { animation-delay: 0s;    }
-.profiles-grid.active .pcard:nth-child(2) { animation-delay: 0.3s;  }
-.profiles-grid.active .pcard:nth-child(3) { animation-delay: 0.6s;  }
+.js-reveal-ready .profiles-grid.active .pcard:nth-child(1) { animation-delay: 0s;    }
+.js-reveal-ready .profiles-grid.active .pcard:nth-child(2) { animation-delay: 0.3s;  }
+.js-reveal-ready .profiles-grid.active .pcard:nth-child(3) { animation-delay: 0.6s;  }
 
 /* =========================================
    PCARD — CLOSED STATE

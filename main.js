@@ -10,6 +10,9 @@ const dictionary = {
     'nav-solucoes': 'Soluções',
     'nav-hub': 'Knowledge Center',
     'nav-sobre': 'Liderança',
+    'nav-about': 'Sobre Nós',
+    'nav-blog': 'Blog',
+    'nav-engagements': 'Modelos de Engajamento',
     'nav-cta': 'Agendar Reunião Estratégica',
     
     // Hero Section
@@ -94,6 +97,9 @@ const dictionary = {
     'cta-title': 'Fale com nosso time executivo.',
     'cta-desc': 'Atuamos apenas com mandatos altamente selecionados. Preencha o formulário para um first-assessment.',
     'cta-form-btn': 'Enviar Contato',
+    'contact-email-label': 'Email Direto',
+    'contact-schedule-label': 'Agendamento Executivo',
+    'contact-offices-label': 'Escritórios',
     'footer-rights': 'Todos os Direitos Reservados. Consultoria estritamente confidencial e seletiva.'
   },
   en: {
@@ -101,6 +107,9 @@ const dictionary = {
     'nav-solucoes': 'Solutions',
     'nav-hub': 'Knowledge Center',
     'nav-sobre': 'Leadership',
+    'nav-about': 'About Us',
+    'nav-blog': 'Blog',
+    'nav-engagements': 'Engagement Models',
     'nav-cta': 'Schedule a Strategic Assessment',
     
     // Hero Section
@@ -185,6 +194,9 @@ const dictionary = {
     'cta-title': 'Engage our Executive Team.',
     'cta-desc': 'We take highly selected mandates. Submit an inquiry for preliminary assessment.',
     'cta-form-btn': 'Submit Inquiry',
+    'contact-email-label': 'Direct Email',
+    'contact-schedule-label': 'Executive Scheduling',
+    'contact-offices-label': 'Offices',
     'footer-rights': 'All Rights Reserved. Highly selective and confidential consultancy.'
   },
   es: {
@@ -192,6 +204,9 @@ const dictionary = {
     'nav-solucoes': 'Soluciones',
     'nav-hub': 'Centro de Conocimiento',
     'nav-sobre': 'Liderazgo',
+    'nav-about': 'Sobre Nosotros',
+    'nav-blog': 'Blog',
+    'nav-engagements': 'Modelos de Compromiso',
     'nav-cta': 'Programar Evaluación Estratégica',
     
     // Hero Section
@@ -276,6 +291,9 @@ const dictionary = {
     'cta-title': 'Hable con nuestro equipo ejecutivo.',
     'cta-desc': 'Aceptamos mandatos altamente seleccionados. Envíe una consulta para evaluación preliminar.',
     'cta-form-btn': 'Enviar Consulta',
+    'contact-email-label': 'Correo Directo',
+    'contact-schedule-label': 'Programación Ejecutiva',
+    'contact-offices-label': 'Oficinas',
     'footer-rights': 'Todos los Derechos Reservados. Consultoría estrictamente confidencial y selectiva.'
   }
 };
@@ -294,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Restore preferred Language
-    const savedLang = localStorage.getItem('axion-lang') || 'pt';
+    const savedLang = localStorage.getItem('axion-lang') || 'en';
     langSelector.value = savedLang;
     updateLanguage(savedLang);
   }
@@ -361,6 +379,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, 100);
+
+  // Fallback: force all reveals active after 2s (in case observer never fires in production)
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.active)').forEach(el => el.classList.add('active'));
+  }, 2000);
 
 });
 
